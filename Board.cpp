@@ -1,6 +1,6 @@
 #include "Board.h"
 
-constexpr char EMPTY_SLOT = '+';
+const char EMPTY_SLOT = '+';
 
 Board::Board(int width, int height) : width(width), height(height) {
 	init();

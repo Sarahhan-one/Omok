@@ -1,8 +1,12 @@
 #pragma once
 #include "Board.h"
 #include "Display.h"
+#include <SFML/Network.hpp>
+using namespace sf;
 
 class GameManager {
+public:
+	enum class Role { SERVER, CLIENT };
 private:
 	Board board; 
 	Display display; 
@@ -19,7 +23,22 @@ private:
 	void switchTurn();
 	void displayWinner();
 
+	// networking members and methods
+	Role role; 
+	TcpSocket socket;
+	TcpListener listener; 
+	IpAddress serverIp;
+	bool isMyTurn;
+
+	void setupServer();
+	void setupClient(); 
+	void waitForOpponent();
+
+	bool playAgain();
+	void resetGame();
+
+
 public:
-	GameManager();
+	GameManager(Role role);
 	void run();
 };
