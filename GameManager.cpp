@@ -205,6 +205,8 @@ void GameManager::displayWinner() {
 }
 
 void GameManager::resetGame() {
+	Board newBoard(BOARD_SIZE, BOARD_SIZE);
+	board = newBoard;
 	board.init();
 
 	currentRow = board.getHeight() / 2;
